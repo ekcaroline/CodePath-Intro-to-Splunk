@@ -29,6 +29,7 @@ These .csv files represent or emulate real-world datasets, providing valuable pr
 ## Resources
 
 [Splunk Documentation](https://docs.splunk.com/Documentation/Splunk)
+
 [Splunk Quick Reference Guide](https://www.splunk.com/en_us/resources/splunk-quick-reference-guide.html?301=/en_us/pdfs/solution-guides/splunk-quick-reference-guide.pdf)
 
 
