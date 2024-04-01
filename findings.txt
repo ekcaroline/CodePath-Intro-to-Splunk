@@ -1,0 +1,128 @@
+﻿Instructions for Copying and Sharing this Document
+📣 DELETE THIS BOX BEFORE SUBMITTING!!
+
+
+Step 1: Click “File -> Make a Copy” to make a copy of this document that you can edit.
+   
+Step 2: Change the Share settings to “Anyone with Link -> Editor”. This will allow our graders to leave comments on your submission. 
+  
+
+  
+
+	
+
+CYB102 Project 5                                                 (🔗 Instructions Page)
+
+
+👤 Student Name: Caroline Ek
+✉️ Student Email: ekcaroline30@gmail.com
+
+	
+
+CTF Challenges (Required)
+
+
+Part 1 - Searching the Netflix Data (1pt each)
+index=main source=Netflix
+
+
+👥 Challenge 1:  How many TV shows on Netflix are in the Docuseries genre?
+	Solution: index=main host="Netflix" type="TV Show" listed_in=Docuseries | stats count
+1. 85
+2. 	
+
+
+
+👥 Challenge 2:  How many movies on Netflix have a rating of TV-PG?
+	Solution: index=main host="Netflix" type="Movie" rating="TV-PG" |  stats count
+1. 540
+2. 	
+
+
+
+👥 Challenge 3: How many movies on Netflix were released in the year 2020?
+	Solution: index=main host="Netflix" release_year="2020" type=”Movie” | stats count
+1. 2. 	
+
+
+
+👥 Challenge 4: What is the longest duration by season on Netflix, and what is its TV rating?
+	Solution: index=main host="Netflix" duration="*seasons" | stats count by duration | sort count
+1. TV-14
+2. 	
+
+
+
+👥 Challenge 5: How many movies on Netflix are listed as action and are rated PG-13?
+	Solution: index=main host="Netflix" listed_in="Action & Adventure" type="Movie" rating="PG-13" | stats count
+1. 23
+2. 	
+
+
+
+👥 Challenge 6: How many movies and TV shows on Netflix have their country of origin as Turkey?
+	Solution:index=main host="Netflix" (type="Movie" OR type="TV Show") country="Turkey" | stats count
+1. 105
+2. 	
+
+
+
+👥 Challenge 7: Which release year had the most movies rated G? (Not TV-G)
+	Solution: index=main host="Netflix" type="Movie" rating="G" | stats count by release_year | sort -count
+1. 2. 	
+
+
+
+👥 Challenge 8: What two TV-Y7 rated shows were released in 2019 and were added to Netflix on November 22, 2019?
+	Solution: index=main host="Netflix" type="TV Show" rating="TV-Y7" release_year="2019" date_added="November 22, 2019"
+1. Trolls
+2. The Dragon Prince
+	
+
+
+
+👥 Challenge 9: Which year had the most movies from the United States?
+	Solution: index=main host="Netflix" type="Movie" country="United States" | stats count by release_year | sort -count
+1. 2017
+2. 	
+
+
+
+👥 Challenge 10: What is the oldest TV show by Release Year on Netflix?
+	Solution: index=main host="Netflix" type="TV Show" | stats count by release_year 
+1. 2. 	
+
+Part 2 - Investigating the Malware (2pts each)
+
+
+👥 Challenge 11: What was the IP address that uploaded the malware (MD5 hash: 3AADBF7E527FC1A050E1C97FEA1CBA4D)
+	Solution: index=main host=blueproxy OR host=failedattempts OR host=webserver OR host="uploadedhashes" Event="File Uploaded" "File Hash"=3AADBF7E527FC1A050E1C97FEA1CBA4D
+1. 192.168.1.10
+2. EvilScript.exe
+	
+
+
+
+👥 Challenge 12: What usernames did that IP address try to login to the system as? Which one did they upload a file as?
+	Solution: index=main host=blueproxy OR host=failedattempts OR host=webserver OR host="uploadedhashes" IP="192.168.1.10"
+1.  Username=ABurke
+2. 	
+
+
+
+👥 Challenge 13: What was the User Agent String of the attacker when they successfully uploaded a file?
+	Solution: index=main host=blueproxy OR host=failedattempts OR host=webserver OR host="uploadedhashes" IP="192.168.1.10" Username=ABurke "User Agent"="Firefox/89.0"
+1. 2. 	
+
+
+
+👥 Challenge 14: Did any other users also upload a file around that time? If so, who and what was their IP address?
+	Solution: index=main host=blueproxy OR host=failedattempts OR host=webserver OR host="uploadedhashes" Username="*" Event="File Upload"
+1. Jmann
+2. 192.168.1.7
+	
+
+
+
+👥 Challenge 15: Looking at the uploaded hashes, what were the files called that the two users uploaded? Which one seems like it was malicious?
+	Solution: ABurke seems malicious since the title of the file he uploaded is called EvilScript.exe whereas Jmann uploaded a pdf called proposal.pdf which does not seem malicious. 
