@@ -21,7 +21,7 @@ This is a project given to me by CodePath. Throughout this project, I was able t
 
 ## Data
 
-These .csv files emulate real-world datasets, providing valuable practice opportunities for honing my data analysis skills. While not actual datasets, they closely resemble real-world scenarios, offering diverse data structures and content for exploration.
+These .csv files represent or emulate real-world datasets, providing valuable practice opportunities for honing my data analysis skills.
 
 [GitHub Repository](https://github.com/codepath/cyb102-vm-setup/tree/ad78d40404247031de11e01ea984b20e82ec8c75/Files/unit5)
 
